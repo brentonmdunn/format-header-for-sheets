@@ -1,6 +1,13 @@
 import './App.css';
 import React, { useRef, useState } from 'react';
 
+
+
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
+
+
+
 // Function to format header
 function formatForSheet(header) {
   const namePattern = /Name: (.+?)\n/;
@@ -22,7 +29,7 @@ function App() {
   const [header, setHeader] = useState('');
   const [output, setOutput] = useState({ name: '', email: '', pid: '' });
 
-  const [copySuccess, setCopySuccess] = useState('');
+  const [copySuccess, setCopySuccess] = useState('Copy');
   const textAreaRef = useRef(null);
 
   function copyToClipboard(e) {
@@ -43,18 +50,37 @@ function App() {
   const handleInputChange = (event) => {
     setHeader(event.target.value);
     setOutput(formatForSheet(event.target.value));
-    setCopySuccess('')
+    setCopySuccess('Copy')
   };
+
+
+  const handleClear = (e) => {
+    setCopySuccess('Copy')
+    setHeader('')
+    setOutput({ name: '', email: '', pid: '' })
+  }
 
   return (
     <div className='main'>
-      <textarea ref={textAreaRef} value={header} onChange={handleInputChange}></textarea>
-      <button onClick={copyToClipboard}>Copy</button>
-      {copySuccess}
-      <div className='results'>
-        <p>Name: {output.name}</p>
-        <p>Email: {output.email}</p>
-        <p>PID: {output.pid}</p>
+      
+      <TextField
+          id="outlined-multiline-static"
+          multiline
+          rows={15}
+          ref={textAreaRef} value={header} onChange={handleInputChange}
+        />
+      <div class="container">
+        <div className='copy'>
+          <Button variant="contained" onClick={copyToClipboard}>{copySuccess}</Button>
+        </div>
+        <div className="clear">
+          <Button variant="outlined"  onClick={handleClear}>clear</Button>
+        </div>
+        <div className='results'>
+          <p>Name: <span className="to-copy">{output.name}</span></p>
+          <p>Email: <span className="to-copy">{output.email}</span></p>
+          <p>PID: <span className="to-copy">{output.pid}</span></p>
+        </div>
       </div>
     </div>
   );
