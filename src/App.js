@@ -1,15 +1,9 @@
 import './App.css';
 import React, { useRef, useState } from 'react';
-
-
-
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 
-
-
-// Function to format header
-function formatForSheet(header) {
+const formatForSheet = (header) => {
   const namePattern = /Name: (.+?)\n/;
   const nameMatch = header.match(namePattern);
   const emailPattern = /Email: (.+?)\n/;
@@ -17,34 +11,29 @@ function formatForSheet(header) {
   const pidPattern = /PID: ([AU]\d{8})\n/;
   const pidMatch = header.match(pidPattern);
 
-  if (nameMatch && emailMatch && pidMatch) {
-    return { name: nameMatch[1], email: emailMatch[1] , pid: pidMatch[1]};
-  } else {
-    return { name: '', email: '', pid: '' };
-  }
+  return { 
+    name: nameMatch ? nameMatch[1] : '', 
+    email: emailMatch ? emailMatch[1] : '', 
+    pid: pidMatch ? pidMatch[1] : '' 
+  };
 }
 
-// Component for the main app
 function App() {
   const [header, setHeader] = useState('');
   const [output, setOutput] = useState({ name: '', email: '', pid: '' });
-
   const [copySuccess, setCopySuccess] = useState('Copy');
   const textAreaRef = useRef(null);
 
-  function copyToClipboard(e) {
-
-    if (output.name && output.email) {
-      const data = `${output.name}\t${output.email}\t${output.pid}`;
-      navigator.clipboard.writeText(data)
-        .then(() => {
-          setCopySuccess('Copied!');
-        })
-        .catch((error) => {
-          console.error('Failed to copy:', error);
-          setCopySuccess('Failed to copy');
-        });
-    } 
+  const copyToClipboard = (e) => {
+    const data = `${output.name ? output.name : ''}\t${output.email ? output.email : ''}\t${output.pid ? output.pid : ''}`;
+    navigator.clipboard.writeText(data)
+      .then(() => {
+        setCopySuccess('Copied!');
+      })
+      .catch((error) => {
+        console.error('Failed to copy:', error);
+        setCopySuccess('Failed to copy');
+      });
   };
 
   const handleInputChange = (event) => {
@@ -52,7 +41,6 @@ function App() {
     setOutput(formatForSheet(event.target.value));
     setCopySuccess('Copy')
   };
-
 
   const handleClear = (e) => {
     setCopySuccess('Copy')
@@ -62,12 +50,13 @@ function App() {
 
   return (
     <div className='main'>
-      
       <TextField
           id="outlined-multiline-static"
           multiline
           rows={15}
-          ref={textAreaRef} value={header} onChange={handleInputChange}
+          ref={textAreaRef} 
+          value={header} 
+          onChange={handleInputChange}
         />
       <div class="container">
         <div className='copy'>
