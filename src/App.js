@@ -51,13 +51,13 @@ function App() {
   return (
     <div className='main'>
       <TextField
-          id="outlined-multiline-static"
-          multiline
-          rows={15}
-          ref={textAreaRef} 
-          value={header} 
-          onChange={handleInputChange}
-        />
+        id="outlined-multiline-static"
+        multiline
+        rows={15}
+        ref={textAreaRef} 
+        value={header} 
+        onChange={handleInputChange}
+      />
       <div class="container">
         <div className='copy'>
           <Button variant="contained" onClick={copyToClipboard}>{copySuccess}</Button>
