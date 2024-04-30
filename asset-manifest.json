@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/format-header-for-sheets/static/css/main.0d554a1e.css",
-    "main.js": "/format-header-for-sheets/static/js/main.de7a0ac6.js",
-    "static/js/453.118fd536.chunk.js": "/format-header-for-sheets/static/js/453.118fd536.chunk.js",
+    "main.css": "/format-header-for-sheets/static/css/main.6f237c38.css",
+    "main.js": "/format-header-for-sheets/static/js/main.da942993.js",
+    "static/js/453.1129e40d.chunk.js": "/format-header-for-sheets/static/js/453.1129e40d.chunk.js",
     "index.html": "/format-header-for-sheets/index.html",
-    "main.0d554a1e.css.map": "/format-header-for-sheets/static/css/main.0d554a1e.css.map",
-    "main.de7a0ac6.js.map": "/format-header-for-sheets/static/js/main.de7a0ac6.js.map",
-    "453.118fd536.chunk.js.map": "/format-header-for-sheets/static/js/453.118fd536.chunk.js.map"
+    "main.6f237c38.css.map": "/format-header-for-sheets/static/css/main.6f237c38.css.map",
+    "main.da942993.js.map": "/format-header-for-sheets/static/js/main.da942993.js.map",
+    "453.1129e40d.chunk.js.map": "/format-header-for-sheets/static/js/453.1129e40d.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.0d554a1e.css",
-    "static/js/main.de7a0ac6.js"
+    "static/css/main.6f237c38.css",
+    "static/js/main.da942993.js"
   ]
 }
